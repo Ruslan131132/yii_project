@@ -13,6 +13,7 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>" class="fontawesome-i2svg-active fontawesome-i2svg-complete">
     <head>
+        <base href="/">
         <meta charset="<?= Yii::$app->charset ?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -283,14 +284,42 @@ AppAsset::register($this);
                                         </div>
                                     </li>
                                 </ul>
-                                <a class="btn fw-500 ms-lg-4 btn-primary" href="">
-                                    Главная
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right ms-2">
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                        <polyline points="12 5 19 12 12 19"></polyline>
-                                    </svg>
-                                </a>
+                                <?=
+                                    Yii::$app->user->isGuest ? (
+                                        Html::tag(
+                                                'a',
+                                                'Войти' . '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right ms-2">
+                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                        </svg>',
+
+                                                [
+                                                    'class' => 'btn fw-500 ms-lg-4 btn-primary',
+                                                    'href' => \yii\helpers\Url::to(['main/login'])
+                                                ]
+                                        )
+                                    ) : (
+                                        '<div class="flex-shrink-0 dropdown">
+                                            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">'
+                                                . \yii\helpers\Html::img("@web/". Yii::$app->user->identity->img, [
+                                                    'class' => 'rounded-circle',
+                                                    'width' => '32',
+                                                    'height' => '32',
+                                                    'alt' => 'Avatar'
+                                                ])
+                                                .
+                                        '<strong class="d-none d-sm-inline"> ' .  Yii::$app->user->identity->name . '</strong>
+                                            </a>
+                                            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                                                <li><a class="dropdown-item" href="#">'.  Yii::$app->user->identity->email . '</a></li>
+                                                <li><a class="dropdown-item" href="#">Настройки</a></li>
+                                                <li><a class="dropdown-item" href="#">Профиль</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item" href="'.\yii\helpers\Url::to(['main/logout']).'">Выйти</a></li>
+                                            </ul>
+                                        </div>'
+                                    )
+                                ?>
                             </div>
                         </div>
                     </nav>
