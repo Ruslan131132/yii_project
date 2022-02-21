@@ -9,6 +9,7 @@ $config = [
     'bootstrap' => ['log'],
     'layout' => 'blog',
     'name' => 'Blog',
+    'language' => 'ru',
     'defaultRoute' => 'main/index',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -18,6 +19,7 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'PQL5_acUzk3BcC4kAYVQ7gb6qAwkLVlz',
+            'baseUrl' => '',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -46,14 +48,16 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '/logout' => 'main/logout',
+                '/login' => 'main/login',
+                'post/<alias:[a-zA-Z0-9-]+>' => 'post/view',
+                'categories/<alias:[a-zA-Z0-9-]+>' => 'category/view',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
