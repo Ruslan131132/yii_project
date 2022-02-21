@@ -10633,6 +10633,19 @@ textarea.form-control-lg {
   font-size: 1rem !important;
 }
 
+.fs-7 {
+  font-size: 0.9rem !important;
+}
+
+.fs-8 {
+  font-size: 0.8rem !important;
+}
+
+.fs-9 {
+  font-size: 0.7rem !important;
+}
+
+
 .fst-italic {
   font-style: italic !important;
 }
@@ -19430,6 +19443,34 @@ body {
 }
 .form-check.form-check-solid .form-check-input:checked {
   background-color: #0061f2;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  -moz-appearance: textfield;
+}
+
+.form-signin input[type="number"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
 }
 
 .form-control-solid {
