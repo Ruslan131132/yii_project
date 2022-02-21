@@ -28,7 +28,7 @@ $this->title = 'Main Blog';
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-                    <img class="img-fluid" src="assets/img/illustrations/kisspng.png" alt="Японская кухня">
+                    <img class="img-fluid" src="/assets/img/illustrations/kisspng.png" alt="Японская кухня">
                 </div>
             </div>
         </div>
@@ -54,78 +54,14 @@ $this->title = 'Main Blog';
             </div>
         </div>
         <div class="row gx-5 text-center">
-            <div class="col-lg-4 mb-5">
-                <h6 class="mb-3">Рецепт окономияки (видео) お好み焼き</h6>
-                <a class="d-block rounded-3 lift lift-lg" href="">
-                    <img class="img-fluid rounded-3" src="assets/img/Okonomiyaki-Recipe-5668-III.jpeg">
-                </a>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <h6 class="mb-3">Майонез (Kewpie Mayo) マヨネーズ</h6>
-                <a class="d-block rounded-3 lift lift-lg" href="">
-                    <img class="img-fluid rounded-3" src="assets/img/Japanese-Mayonnaise-Kewpie-Mayo-9057-III-768x1152.jpeg">
-                </a>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <h6 class="mb-3">Гюдон (тарелка с говядиной) 牛丼</h6>
-                <a class="d-block rounded-3 lift lift-lg" href="">
-                    <img class="img-fluid rounded-3" src="assets/img/Gyudon-2255-II-768x1152.jpeg">
-                </a>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <h6 class="mb-3">Салат с лапшой соба (видео) 蕎麦サラダ</h6>
-                <a class="d-block rounded-3 lift lift-lg" href="">
-                    <img class="img-fluid rounded-3" src="assets/img/Soba-Salad-NEW-II.jpeg">
-                </a>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <h6 class="mb-3">Баклажан Мапо (Мабо Насу) 麻婆茄子</h6>
-                <a class="d-block rounded-3 lift lift-lg" href="">
-                    <img class="img-fluid rounded-3" src="assets/img/Mapo-Nasu-1062-IV-768x1152.jpeg">
-                </a>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <h6 class="mb-3">Цыпленок терияки (видео) チキン照り焼き</h6>
-                <a class="d-block rounded-3 lift lift-lg" href="">
-                    <img class="img-fluid rounded-3" src="assets/img/Chicken-Teriyaki-9942-III-768x1152.jpeg">
-                </a>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <h6 class="mb-3">Жареный рис с креветками 海老チャーハン</h6>
-                <a class="d-block rounded-3 lift lift-lg" href="">
-                    <img class="img-fluid rounded-3" src="assets/img/Shrimp-Fried-Rice-6507-II.jpeg">
-                </a>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <h6 class="mb-3">Японский бутерброд с яйцом (Тамаго Сандо) た ま ご サ ン ド</h6>
-                <a class="d-block rounded-3 lift lift-lg" href="">
-                    <img class="img-fluid rounded-3" src="assets/img/Tamago-Sando-II-768x1152.jpeg">
-                </a>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <h6 class="mb-3">Запеченный японский сладкий картофель (Яки Имо) 焼き芋</h6>
-                <a class="d-block rounded-3 lift lift-lg" href="">
-                    <img class="img-fluid rounded-3" src="assets/img/Baked-Japanese-Sweet-Potatoes-4369-II.jpeg">
-                </a>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <h6 class="mb-3">Ёсенабэ (японское жаркое) 寄せ鍋</h6>
-                <a class="d-block rounded-3 lift lift-lg" href="">
-                    <img class="img-fluid rounded-3" src="assets/img/Yosenabe-4929-IV-768x1152.jpeg">
-                </a>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <h6 class="mb-3">Говяжий удон (Niku Udon) (Видео) 肉うどん</h6>
-                <a class="d-block rounded-3 lift lift-lg" href="">
-                    <img class="img-fluid rounded-3" src="assets/img/Beef-Udon-4316-II.jpeg">
-                </a>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <h6 class="mb-3">Японский чизкейк スフレチーズケーキ</h6>
-                <a class="d-block rounded-3 lift lift-lg" href="">
-                    <img class="img-fluid rounded-3" src="assets/img/Japanese-Cheesecake-4675-II.jpeg">
-                </a>
-            </div>
+            <?php foreach ($posts as $post): ?>
+                <div class="col-lg-4 mb-5">
+                    <h6 class="mb-3"><?= $post->name ?></h6>
+                    <a class="d-block rounded-3 lift lift-lg" href="<?= yii\helpers\Url::to(['post/view', 'alias' => $post->alias]) ?>">
+                        <?= \yii\helpers\Html::img("@web/{$post->img}", ['class' => 'img-fluid rounded-3']) ?>
+                    </a>
+                </div>
+            <?php endforeach ?>
         </div>
     </div>
     <div class="svg-border-rounded text-white">
@@ -313,63 +249,37 @@ $this->title = 'Main Blog';
             </div>
         </div>
         <div class="row gx-5 text-center">
-            <div class="col-lg-4 mb-5">
-                <div class="card">
-                    <img class="bd-placeholder-img card-img-top" width="100%" height="180" src="assets/img/How-to-Enjoy-Sake-6712.jpeg">
-                    <div class="card-body">
-                        <h5 class="card-title">ЯПОНСКАЯ КУЛЬТУРА</h5>
-                        <p class="card-text">Как наслаждаться саке (включая пищевые сочетания)</p>
-                        <div class="text-muted d-flex justify-content-between pt-4">
-                            <p class="font-weight-light font-italic">3 комментария</p>
-                            <a href="#" class="text-primary">
-                                Подробнее
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right ms-2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
+            <?php foreach ($last_posts as $post): ?>
+                <div class="col-lg-4 mb-5">
+                    <div class="card">
+                        <?= \yii\helpers\Html::img("@web/{$post->img}", [
+                                'class' => 'bd-placeholder-img card-img-top',
+                                'width' => '100%',
+                                'height' => '250',
+                                'alt' => $post->name
+                            ]);
+                        ?>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a class="text-muted" href="<?= yii\helpers\Url::to(['category/view', 'alias' => $post->category->alias]) ?>">
+                                    <?= $post->category->name?>
+                                </a>
+                            </h5>
+                            <p class="card-text"><?= $post->description ?></p>
+                            <div class="text-muted d-flex justify-content-between pt-4">
+                                <p class="font-weight-light font-italic">3 комментария</p>
+                                <a href="<?= yii\helpers\Url::to(['post/view', 'alias' => $post->alias]) ?>" class="text-primary">
+                                    Подробнее
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right ms-2">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <div class="card">
-                    <img class="bd-placeholder-img card-img-top" width="100%" height="180" src="assets/img/Fried-Chicken-with-Scallion-Soy-Sauce-6515-I.jpeg">
-                    <div class="card-body">
-                        <h5 class="card-title">ОСНОВНОЙ</h5>
-                        <p class="card-text">Жареный цыпленок с соевым соусом из зеленого лука (Юринчи) ユーリンチー</p>
-                        <div class="text-muted d-flex justify-content-between pt-4">
-                            <p class="font-weight-light font-italic">9 комментариев</p>
-                            <a href="#" class="text-primary">
-                                Подробнее
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right ms-2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <div class="card">
-                    <img class="bd-placeholder-img card-img-top" width="100%" height="180" src="assets/img/Miso-Ramen-I.jpeg">
-                    <div class="card-body">
-                        <h5 class="card-title">Основной</h5>
-                        <p class="card-text">Вы можете приготовить вкусную миску мисо рамэн с настоящим бульоном за меньшее время…</p>
-                        <div class="text-muted d-flex justify-content-between pt-4">
-                            <p class="font-weight-light font-italic">387 комментариев</p>
-                            <a href="#" class="text-primary">
-                                Подробнее
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right ms-2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
     <div class="svg-border-rounded text-white">
